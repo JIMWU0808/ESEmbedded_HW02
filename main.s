@@ -6,21 +6,18 @@
 .global _start
 .type _start, %function
 _start:
-	nop
+	mov r0, sp
+	mov r1, #3
+	mov r2, #2
+	mov r3, #1
+	
+	push {r1,r2,r3}
+	pop {r1,r2,r3}
+	
+	push {r3}
+	push {r1}
+	push {r2}
+	pop {r3}
+	pop {r1}
+	pop {r2}
 
-	//
-	//branch w/o link
-	//
-	b	label01
-
-label01:
-	nop
-
-	//
-	//branch w/ link
-	//
-	bl	sleep
-
-sleep:
-	nop
-	b	.
