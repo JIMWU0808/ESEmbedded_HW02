@@ -88,6 +88,7 @@ main.s:
 4.將 main.s 編譯並以 qemu 模擬， `$ make clean`, `$ make`, `$ make qemu` 開啟另一 Terminal 連線 `$ arm-none-eabi-gdb` ，再輸入 `target remote localhost:1234` 連接，輸入兩次的 `ctrl + x` 再輸入 `2`, 開啟 Register 以及指令，並且輸入 `si` 單步執行觀察。 當執行到pop 和push指令時觀察值和記憶體位置。
 
 
+
 #3 結果與討論
 
 
