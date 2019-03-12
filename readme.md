@@ -87,9 +87,16 @@ main.s:
 ```
 4.將 main.s 編譯並以 qemu 模擬， `$ make clean`, `$ make`, `$ make qemu` 開啟另一 Terminal 連線 `$ arm-none-eabi-gdb` ，再輸入 `target remote localhost:1234` 連接，輸入兩次的 `ctrl + x` 再輸入 `2`, 開啟 Register 以及指令，並且輸入 `si` 單步執行觀察。 當執行到pop 和push指令時觀察值和記憶體位置。
 
-
+![](https://github.com/JIMWU0808/ESEmbedded_HW02/blob/master/img/2-7.png)
+可以發現pop和push 會改變記憶體位置+4 和-4
+![](https://github.com/JIMWU0808/ESEmbedded_HW02/blob/master/img/2-11.png)
+可以發現push後記憶體的值和pop後記憶體的值
 
 #3 結果與討論
+使用push的時候記憶體位置會-4，一次打三個暫存器的話`push {r1,r2,r3}` 則會一次-12。記憶體中儲存的值則是按照順序 r1，r2，r3;
+使用pop的時候記憶體位置會+4,一次打三個暫存器的話`pop {r1,r2,r3}` 則會一次+12。記憶體中儲存的值也是按照順序 r1，r2，r3;
 
+這次有一個失敗的地方，就是打`push {r3,r1,r2}或是pop{r3,r1,r2}` compile會產生失敗 register range not in acending order, 目前我沒有辦法解決只好把指令拆開來打。
+ 
 
 [ARM infomation center]: http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0489e/Cihfddaf.html
